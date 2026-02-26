@@ -1,5 +1,4 @@
 Hemanth Gavini - Data Analyst Portfolio
-
 Welcome to my personal portfolio website repository.
 
 About Me
