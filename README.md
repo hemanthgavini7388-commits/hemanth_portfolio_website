@@ -21,7 +21,7 @@ This portfolio showcases my:
 
 Live Website
 You can view my live portfolio here:
-https://YOUR_USERNAME.github.io/hemanth_portfolio_website/
+https://github.com/hemanthgavini7388-commits/hemanth_portfolio_website.git
 
 Contact
 Feel free to connect with me:
