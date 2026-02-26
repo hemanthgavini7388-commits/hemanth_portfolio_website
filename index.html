@@ -1,0 +1,1689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hemanth Gavini | Data Analyst | London</title>
+<meta name="description" content="Data Analyst in London specializing in SQL, Python, Power BI, Tableau and advanced forecasting. MSc Data Science, Coventry University.">
+<meta name="keywords" content="Data Analyst London, BI Analyst UK, SQL Python Power BI Analyst, MSc Data Science UK, Hemanth Gavini">
+<meta property="og:title" content="Hemanth Gavini | Data Analyst">
+<meta property="og:description" content="Turning Data into Strategic Business Decisions">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #060F2A;
+    --navy2: #0A1A3E;
+    --blue: #0B3D91;
+    --accent: #1560BD;
+    --steel: #2B6CB0;
+    --light-blue: #4A90D9;
+    --pale: #EBF4FF;
+    --white: #FFFFFF;
+    --gray: #64748B;
+    --light-gray: #F1F5F9;
+    --border: #CBD5E1;
+    --text: #0F172A;
+    --text2: #334155;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text);
+    background: var(--white);
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* CUSTOM CURSOR */
+  .cursor {
+    width: 10px; height: 10px;
+    background: var(--accent);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.15s ease;
+    mix-blend-mode: difference;
+  }
+  .cursor-ring {
+    width: 36px; height: 36px;
+    border: 1.5px solid var(--accent);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9998;
+    transition: all 0.1s ease;
+    opacity: 0.6;
+  }
+
+  /* CANVAS */
+  #bg-canvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: -1;
+    opacity: 0.4;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    padding: 0 60px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(6, 15, 42, 0.92);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 800;
+    font-size: 22px;
+    color: var(--white);
+    letter-spacing: -0.5px;
+  }
+  .nav-logo span { color: var(--light-blue); }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+  .nav-links a {
+    color: rgba(255,255,255,0.65);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--light-blue); }
+
+  .nav-cta {
+    background: var(--accent);
+    color: white !important;
+    padding: 8px 20px;
+    font-size: 12px !important;
+    letter-spacing: 1px !important;
+  }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy2) 60%, #0d2a5e 100%);
+    display: flex;
+    align-items: center;
+    padding: 120px 60px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-grid-line {
+    position: absolute;
+    background: rgba(255,255,255,0.03);
+  }
+
+  .hero-content { max-width: 760px; position: relative; z-index: 2; }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(21, 96, 189, 0.2);
+    border: 1px solid rgba(21, 96, 189, 0.4);
+    color: #7DB9F0;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    margin-bottom: 32px;
+  }
+
+  .hero-dot {
+    width: 6px; height: 6px;
+    background: #4ade80;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.3); }
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(38px, 5.5vw, 68px);
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.08;
+    letter-spacing: -1px;
+    margin-bottom: 28px;
+  }
+  .hero-title .highlight {
+    color: transparent;
+    -webkit-text-stroke: 1.5px rgba(74, 144, 217, 0.7);
+  }
+
+  .hero-sub {
+    font-size: 16px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.7;
+    max-width: 560px;
+    margin-bottom: 44px;
+    font-weight: 400;
+  }
+
+  .hero-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 48px;
+  }
+  .stack-tag {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.7);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 6px 14px;
+    text-transform: uppercase;
+  }
+
+  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+
+  .btn-primary {
+    background: var(--accent);
+    color: white;
+    text-decoration: none;
+    padding: 14px 32px;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.1);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+  .btn-primary:hover::before { transform: translateX(0); }
+
+  .btn-outline {
+    background: transparent;
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    padding: 14px 32px;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    border: 1px solid rgba(255,255,255,0.25);
+    transition: all 0.2s;
+  }
+  .btn-outline:hover {
+    border-color: var(--light-blue);
+    color: var(--light-blue);
+  }
+
+  .hero-metrics {
+    position: absolute;
+    right: 60px;
+    bottom: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .metric-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 20px 28px;
+    text-align: right;
+    backdrop-filter: blur(10px);
+    animation: fadeInRight 0.8s ease forwards;
+    opacity: 0;
+  }
+  .metric-card:nth-child(1) { animation-delay: 0.4s; }
+  .metric-card:nth-child(2) { animation-delay: 0.6s; }
+  .metric-card:nth-child(3) { animation-delay: 0.8s; }
+  @keyframes fadeInRight { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+
+  .metric-num {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--light-blue);
+    line-height: 1;
+  }
+  .metric-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.5px;
+    margin-top: 4px;
+  }
+
+  @keyframes heroIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+  .hero-content > * {
+    animation: heroIn 0.7s ease forwards;
+    opacity: 0;
+  }
+  .hero-content > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero-content > *:nth-child(2) { animation-delay: 0.2s; }
+  .hero-content > *:nth-child(3) { animation-delay: 0.3s; }
+  .hero-content > *:nth-child(4) { animation-delay: 0.4s; }
+  .hero-content > *:nth-child(5) { animation-delay: 0.5s; }
+
+  /* SECTIONS */
+  section { padding: 100px 60px; }
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 800;
+    color: var(--navy);
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+  .section-desc {
+    font-size: 16px;
+    color: var(--gray);
+    max-width: 580px;
+    line-height: 1.75;
+    margin-bottom: 60px;
+  }
+
+  /* ABOUT */
+  #about { background: var(--light-gray); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+    max-width: 1200px;
+  }
+  .about-text p {
+    font-size: 16px;
+    color: var(--text2);
+    line-height: 1.85;
+    margin-bottom: 24px;
+  }
+  .about-text strong { color: var(--navy); font-weight: 600; }
+  .impact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+  }
+  .impact-item {
+    background: var(--white);
+    padding: 28px 24px;
+    transition: background 0.2s;
+  }
+  .impact-item:hover { background: var(--pale); }
+  .impact-num {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--blue);
+    line-height: 1;
+    counter-reset: none;
+  }
+  .impact-desc {
+    font-size: 12px;
+    color: var(--gray);
+    margin-top: 6px;
+    line-height: 1.5;
+  }
+
+  /* SKILLS */
+  #skills { background: var(--white); }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 1px solid var(--border);
+    max-width: 1100px;
+  }
+  .skill-col {
+    padding: 40px 36px;
+    border-right: 1px solid var(--border);
+    transition: background 0.2s;
+  }
+  .skill-col:last-child { border-right: none; }
+  .skill-col:hover { background: var(--pale); }
+  .skill-col-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--navy);
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--accent);
+    margin-bottom: 28px;
+  }
+  .skill-item {
+    font-size: 14px;
+    color: var(--text2);
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .skill-item::before {
+    content: '';
+    width: 3px; height: 3px;
+    background: var(--accent);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* EXPERIENCE */
+  #experience { background: var(--navy); color: white; }
+  #experience .section-title { color: var(--white); }
+  #experience .section-label { color: var(--light-blue); }
+  #experience .section-desc { color: rgba(255,255,255,0.5); }
+
+  .exp-container {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 60px;
+    max-width: 1100px;
+  }
+  .exp-sidebar {
+    border-top: 2px solid var(--accent);
+    padding-top: 28px;
+  }
+  .exp-role {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 8px;
+  }
+  .exp-company {
+    font-size: 13px;
+    color: var(--light-blue);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+  .exp-location {
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 24px;
+  }
+  .exp-items { display: flex; flex-direction: column; gap: 20px; }
+  .exp-item {
+    padding: 24px 28px;
+    border-left: 2px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.03);
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .exp-item:hover {
+    border-left-color: var(--light-blue);
+    background: rgba(255,255,255,0.06);
+  }
+  .exp-item p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.75;
+  }
+  .exp-item strong { color: white; font-weight: 600; }
+
+  /* PROJECTS */
+  #projects { background: var(--light-gray); }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    max-width: 1200px;
+  }
+  .project-card {
+    background: var(--white);
+    padding: 40px 36px;
+    cursor: pointer;
+    transition: all 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+    transform-origin: left;
+  }
+  .project-card:hover::before { transform: scaleX(1); }
+  .project-card:hover { background: var(--pale); }
+
+  .project-num {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--accent);
+    margin-bottom: 20px;
+  }
+  .project-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 14px;
+    line-height: 1.3;
+  }
+  .project-desc {
+    font-size: 13px;
+    color: var(--gray);
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 24px; }
+  .project-tag {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--blue);
+    background: rgba(11, 61, 145, 0.08);
+    padding: 4px 10px;
+  }
+  .project-impact {
+    font-size: 12px;
+    color: var(--text2);
+    border-top: 1px solid var(--border);
+    padding-top: 16px;
+    font-weight: 500;
+  }
+  .project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 16px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent);
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .project-link:hover { color: var(--blue); }
+
+  /* CERTIFICATIONS */
+  #certifications { background: var(--white); }
+  .cert-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--border);
+    max-width: 900px;
+  }
+  .cert-item {
+    background: var(--white);
+    padding: 28px 32px;
+    transition: background 0.2s;
+  }
+  .cert-item:hover { background: var(--pale); }
+  .cert-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .cert-issuer {
+    font-size: 12px;
+    color: var(--gray);
+  }
+
+  /* EDUCATION */
+  #education { background: var(--navy2); }
+  #education .section-title { color: white; }
+  #education .section-label { color: var(--light-blue); }
+
+  .edu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: rgba(255,255,255,0.08);
+    max-width: 1000px;
+  }
+  .edu-card {
+    background: rgba(255,255,255,0.03);
+    padding: 40px 36px;
+    border-top: 2px solid var(--accent);
+    transition: background 0.2s;
+  }
+  .edu-card:hover { background: rgba(255,255,255,0.06); }
+  .edu-degree {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 8px;
+  }
+  .edu-uni {
+    font-size: 13px;
+    color: var(--light-blue);
+    margin-bottom: 4px;
+    font-weight: 500;
+  }
+  .edu-year { font-size: 12px; color: rgba(255,255,255,0.4); margin-bottom: 16px; }
+  .edu-modules { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+
+  /* CONTACT */
+  #contact { background: var(--light-gray); }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    max-width: 1000px;
+    align-items: start;
+  }
+  .contact-info { }
+  .contact-row {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .contact-item {
+    padding: 20px 24px;
+    background: var(--white);
+    border-left: 2px solid var(--accent);
+  }
+  .contact-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+  .contact-value {
+    font-size: 14px;
+    color: var(--text);
+    font-weight: 500;
+  }
+  .contact-value a { color: var(--text); text-decoration: none; }
+  .contact-value a:hover { color: var(--accent); }
+
+  .contact-cta { }
+  .contact-cta p {
+    font-size: 15px;
+    color: var(--text2);
+    line-height: 1.8;
+    margin-bottom: 32px;
+  }
+  .contact-cta .btn-primary { display: inline-block; }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy);
+    padding: 36px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer-name {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: white;
+  }
+  .footer-copy {
+    font-size: 12px;
+    color: rgba(255,255,255,0.35);
+  }
+
+  /* MODAL */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(6, 15, 42, 0.95);
+    z-index: 2000;
+    display: none;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 60px 20px;
+    overflow-y: auto;
+    backdrop-filter: blur(10px);
+  }
+  .modal-overlay.open { display: flex; }
+  .modal {
+    background: var(--white);
+    max-width: 820px;
+    width: 100%;
+    position: relative;
+    animation: modalIn 0.3s ease;
+  }
+  @keyframes modalIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  .modal-close {
+    position: absolute;
+    top: 20px; right: 20px;
+    background: none; border: none;
+    font-size: 22px;
+    color: var(--gray);
+    cursor: pointer;
+    line-height: 1;
+    padding: 4px 10px;
+  }
+  .modal-close:hover { color: var(--navy); background: var(--light-gray); }
+  .modal-header {
+    background: var(--navy);
+    padding: 48px;
+  }
+  .modal-tag {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--light-blue);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .modal-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: white;
+    letter-spacing: -1px;
+    margin-bottom: 16px;
+  }
+  .modal-subtitle { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+  .modal-body { padding: 48px; }
+  .modal-section { margin-bottom: 36px; }
+  .modal-section-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .modal-section p, .modal-section li {
+    font-size: 14px;
+    color: var(--text2);
+    line-height: 1.8;
+    margin-bottom: 8px;
+  }
+  .modal-section ul { padding-left: 18px; }
+  .code-block {
+    background: var(--navy);
+    color: #7DB9F0;
+    padding: 20px 24px;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    line-height: 1.8;
+    overflow-x: auto;
+    margin-top: 12px;
+  }
+  .code-block .keyword { color: #C792EA; }
+  .code-block .string { color: #C3E88D; }
+  .code-block .comment { color: #546E7A; }
+  .metrics-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    margin-top: 16px;
+  }
+  .metric-box {
+    background: var(--pale);
+    padding: 20px;
+    text-align: center;
+  }
+  .metric-box .num {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--blue);
+  }
+  .metric-box .lbl { font-size: 11px; color: var(--gray); margin-top: 4px; }
+
+  /* CHATBOT */
+  .chatbot-wrapper {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    z-index: 1500;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
+  }
+
+  .chat-panel {
+    width: 380px;
+    background: var(--white);
+    box-shadow: 0 20px 60px rgba(6, 15, 42, 0.25);
+    border-top: 3px solid var(--accent);
+    display: none;
+    flex-direction: column;
+    animation: chatIn 0.25s ease;
+  }
+  @keyframes chatIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  .chat-panel.open { display: flex; }
+
+  .chat-header {
+    background: var(--navy);
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .chat-title { font-size: 13px; font-weight: 700; color: white; letter-spacing: 0.3px; }
+  .chat-status { display: flex; align-items: center; gap: 6px; font-size: 10px; color: rgba(255,255,255,0.5); margin-top: 2px; }
+  .status-dot { width: 6px; height: 6px; background: #4ade80; border-radius: 50%; }
+  .chat-close-btn { background: none; border: none; color: rgba(255,255,255,0.5); cursor: pointer; font-size: 18px; }
+
+  .chat-search {
+    padding: 10px 14px;
+    background: var(--light-gray);
+    border-bottom: 1px solid var(--border);
+  }
+  .chat-search input {
+    width: 100%;
+    background: none;
+    border: none;
+    font-size: 12px;
+    color: var(--text);
+    outline: none;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .chat-search input::placeholder { color: var(--gray); }
+
+  .chat-messages {
+    height: 260px;
+    overflow-y: auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: #FAFBFD;
+  }
+  .chat-messages::-webkit-scrollbar { width: 4px; }
+  .chat-messages::-webkit-scrollbar-track { background: transparent; }
+  .chat-messages::-webkit-scrollbar-thumb { background: var(--border); }
+
+  .msg {
+    max-width: 88%;
+    padding: 10px 14px;
+    font-size: 12.5px;
+    line-height: 1.65;
+  }
+  .msg.bot { background: var(--pale); color: var(--text); align-self: flex-start; border-left: 2px solid var(--accent); }
+  .msg.user { background: var(--navy); color: white; align-self: flex-end; }
+
+  .chat-input-area {
+    border-top: 1px solid var(--border);
+    padding: 12px 14px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .chat-input {
+    flex: 1;
+    border: 1px solid var(--border);
+    padding: 9px 12px;
+    font-size: 12px;
+    outline: none;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text);
+    background: var(--white);
+    transition: border-color 0.2s;
+  }
+  .chat-input:focus { border-color: var(--accent); }
+  .chat-send {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 9px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: background 0.2s;
+  }
+  .chat-send:hover { background: var(--blue); }
+  .chat-voice {
+    background: none;
+    border: 1px solid var(--border);
+    width: 36px; height: 36px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gray);
+    transition: all 0.2s;
+  }
+  .chat-voice:hover { border-color: var(--accent); color: var(--accent); }
+  .chat-voice.listening { border-color: #ef4444; color: #ef4444; animation: pulse 1s infinite; }
+
+  .chat-suggestions {
+    padding: 8px 14px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .chat-sugg {
+    font-size: 10px;
+    background: var(--light-gray);
+    border: 1px solid var(--border);
+    color: var(--text2);
+    padding: 4px 10px;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .chat-sugg:hover { background: var(--pale); border-color: var(--accent); color: var(--accent); }
+
+  .chat-toggle {
+    background: var(--accent);
+    color: white;
+    border: none;
+    width: 56px; height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 22px;
+    box-shadow: 0 6px 20px rgba(21, 96, 189, 0.4);
+    transition: all 0.2s;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 800;
+  }
+  .chat-toggle:hover { background: var(--blue); transform: scale(1.05); }
+
+  /* SCROLL REVEAL */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* PROGRESS BAR */
+  #progress-bar {
+    position: fixed;
+    top: 70px; left: 0;
+    height: 2px;
+    background: var(--light-blue);
+    z-index: 999;
+    transition: width 0.1s linear;
+    width: 0%;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    section { padding: 70px 24px; }
+    #hero { padding: 120px 24px 80px; }
+    .hero-metrics { display: none; }
+    .hero-title { letter-spacing: -0.5px; }
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .skill-col { border-right: none; border-bottom: 1px solid var(--border); }
+    .exp-container { grid-template-columns: 1fr; gap: 32px; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .cert-grid { grid-template-columns: 1fr; }
+    .edu-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    footer { flex-direction: column; gap: 12px; text-align: center; padding: 28px 24px; }
+    .chat-panel { width: calc(100vw - 56px); }
+    .modal { max-width: 100%; }
+    .modal-header, .modal-body { padding: 28px 24px; }
+    .metrics-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
+<canvas id="bg-canvas"></canvas>
+<div id="progress-bar"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">HG<span>.</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-content">
+    <div class="hero-tag">
+      <span class="hero-dot"></span>
+      Available for new opportunities
+    </div>
+    <h1 class="hero-title">
+      Turning Data into<br><span class="highlight">Strategic</span><br>Business Decisions.
+    </h1>
+    <p class="hero-sub">
+      MSc Data Science candidate with hands-on experience delivering end-to-end analytics solutions across retail and operational datasets. Specialised in automation, forecasting, segmentation and executive-level BI reporting.
+    </p>
+    <div class="hero-stack">
+      <span class="stack-tag">SQL</span>
+      <span class="stack-tag">Python</span>
+      <span class="stack-tag">Power BI</span>
+      <span class="stack-tag">Tableau</span>
+      <span class="stack-tag">Forecasting</span>
+      <span class="stack-tag">ETL Pipelines</span>
+      <span class="stack-tag">KPI Reporting</span>
+    </div>
+    <div class="hero-actions">
+      <a href="#projects" class="btn-primary">View Projects</a>
+      <a href="https://linkedin.com/in/hemanthgavini" target="_blank" class="btn-outline">LinkedIn Profile</a>
+      <a href="mailto:hemanthgavini7388@gmail.com" class="btn-outline">Get in Touch</a>
+    </div>
+  </div>
+  <div class="hero-metrics">
+    <div class="metric-card">
+      <div class="metric-num">40%</div>
+      <div class="metric-label">Reporting Efficiency Gain</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-num">95%</div>
+      <div class="metric-label">Forecasting Model Accuracy</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-num">100K+</div>
+      <div class="metric-label">Records Processed</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label reveal">Executive Profile</div>
+  <h2 class="section-title reveal">Commercially Aware.<br>Data-Driven. Delivery-Focused.</h2>
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p>I am a <strong>Data Analyst</strong> based in London with an MSc in Data Science from Coventry University, combining academic rigour with hands-on commercial delivery across retail and operational environments.</p>
+      <p>My approach is to translate complex datasets into <strong>actionable business intelligence</strong> - whether that means engineering robust ETL pipelines, building executive-facing dashboards, or surfacing customer segmentation insights that directly influence strategy.</p>
+      <p>I have hands-on experience integrating <strong>100K+ record datasets</strong>, automating Power BI and Tableau reporting workflows, and delivering SQL and Python-based analytics solutions that reduce manual effort and enable near-real-time decision-making.</p>
+      <p>I bring a <strong>governance-first mindset</strong> to every project - ensuring data quality, validation and auditability from ingestion to output.</p>
+    </div>
+    <div class="impact-grid reveal">
+      <div class="impact-item">
+        <div class="impact-num">40%</div>
+        <div class="impact-desc">Reduction in manual reporting effort through dashboard automation</div>
+      </div>
+      <div class="impact-item">
+        <div class="impact-num">95%</div>
+        <div class="impact-desc">Predictive accuracy achieved in national health expenditure forecasting</div>
+      </div>
+      <div class="impact-item">
+        <div class="impact-num">+22%</div>
+        <div class="impact-desc">Higher customer ratings identified via online order segmentation</div>
+      </div>
+      <div class="impact-item">
+        <div class="impact-num">20%</div>
+        <div class="impact-desc">Cost optimisation opportunity identified via preventive health modelling</div>
+      </div>
+      <div class="impact-item">
+        <div class="impact-num">15%</div>
+        <div class="impact-desc">Projected uplift in repeat purchases from segmentation-driven strategy</div>
+      </div>
+      <div class="impact-item">
+        <div class="impact-num">12K+</div>
+        <div class="impact-desc">Records per pipeline at 20 records/sec via producer-consumer architecture</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label reveal">Technical Capability</div>
+  <h2 class="section-title reveal">Core Competencies</h2>
+  <p class="section-desc reveal">A structured capability framework covering analytics, engineering and tooling - built through academic study and applied commercial delivery.</p>
+  <div class="skills-grid reveal">
+    <div class="skill-col">
+      <div class="skill-col-title">Analytics & Modelling</div>
+      <div class="skill-item">Exploratory Data Analysis (EDA)</div>
+      <div class="skill-item">Statistical Analysis & Regression</div>
+      <div class="skill-item">Forecasting & Trend Analysis</div>
+      <div class="skill-item">Customer Segmentation</div>
+      <div class="skill-item">KPI Development & Tracking</div>
+      <div class="skill-item">Cohort Analysis</div>
+      <div class="skill-item">Performance Benchmarking</div>
+    </div>
+    <div class="skill-col">
+      <div class="skill-col-title">Technical Stack</div>
+      <div class="skill-item">SQL - CTEs, Aggregations, Window Functions</div>
+      <div class="skill-item">Python - Pandas, NumPy, scikit-learn</div>
+      <div class="skill-item">Python - Matplotlib, Seaborn</div>
+      <div class="skill-item">Power BI - DAX, Direct Query, Modelling</div>
+      <div class="skill-item">Tableau - Interactive Dashboards</div>
+      <div class="skill-item">Excel - Advanced Formulas, Pivot Tables</div>
+      <div class="skill-item">MySQL - Database Management</div>
+    </div>
+    <div class="skill-col">
+      <div class="skill-col-title">Engineering & Governance</div>
+      <div class="skill-item">ETL Pipeline Development</div>
+      <div class="skill-item">Data Cleaning & Transformation</div>
+      <div class="skill-item">Data Quality Assurance (QA)</div>
+      <div class="skill-item">Data Validation & Governance</div>
+      <div class="skill-item">Producer-Consumer Architecture</div>
+      <div class="skill-item">Real-Time Data Ingestion</div>
+      <div class="skill-item">Adobe Premiere Pro · CapCut · Canva</div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label reveal">Career History</div>
+  <h2 class="section-title reveal">Professional Experience</h2>
+  <p class="section-desc reveal">Delivering commercially-focused analytics solutions across retail, operations and marketing functions.</p>
+  <div class="exp-container">
+    <div class="exp-sidebar reveal">
+      <div class="exp-role">Data Analyst</div>
+      <div class="exp-company">Commercial Retail & Operations</div>
+      <div class="exp-location">London, United Kingdom</div>
+      <p style="font-size:13px;color:rgba(255,255,255,0.4);line-height:1.7;">End-to-end analytics ownership across POS data, delivery operations and marketing performance. Responsible for data governance, BI delivery and stakeholder reporting.</p>
+    </div>
+    <div class="exp-items reveal">
+      <div class="exp-item">
+        <p><strong>Dataset Integration & Governance:</strong> Led end-to-end analytics by integrating POS and delivery datasets (100K+ rows), implementing structured data governance, validation processes and QA checks to ensure reporting-grade data quality.</p>
+      </div>
+      <div class="exp-item">
+        <p><strong>Dashboard Automation:</strong> Built interactive Power BI and Tableau dashboards tracking sales performance, SLA adherence, customer ratings and campaign ROI - <strong>reducing manual reporting effort by 40%</strong> through automation and Direct Query integration.</p>
+      </div>
+      <div class="exp-item">
+        <p><strong>ETL Architecture:</strong> Developed Python and SQL-based ETL pipelines processing 12K+ records using a producer-consumer architecture, enabling near-real-time reporting through Power BI Direct Query.</p>
+      </div>
+      <div class="exp-item">
+        <p><strong>Segmentation Analysis:</strong> Conducted segmentation on 50K+ transactions; identified that online orders achieved <strong>+22% higher ratings</strong> and <strong>+18% higher delivery satisfaction</strong>, directly supporting strategy for a <strong>15% projected uplift</strong> in repeat purchases.</p>
+      </div>
+      <div class="exp-item">
+        <p><strong>Stakeholder Delivery:</strong> Delivered insights to senior stakeholders, translating complex analytical outputs into commercial recommendations across operations and marketing decision-making.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label reveal">Case Studies</div>
+  <h2 class="section-title reveal">Featured Projects</h2>
+  <p class="section-desc reveal">Select a project to view full case study including architecture, methodology, code samples and business impact analysis.</p>
+  <div class="projects-grid reveal">
+    <div class="project-card" onclick="openModal('amazon')">
+      <div class="project-num">Project 01 - June 2025</div>
+      <div class="project-title">Amazon Real-Time Sales Analytics</div>
+      <p class="project-desc">Designed and deployed a real-time analytics pipeline ingesting 12,000+ sales records at 20 records/second, with automated KPI aggregations and live Direct Query dashboards for continuous business monitoring.</p>
+      <div class="project-tags">
+        <span class="project-tag">Python</span>
+        <span class="project-tag">MySQL</span>
+        <span class="project-tag">Power BI</span>
+        <span class="project-tag">ETL</span>
+      </div>
+      <div class="project-impact">Key Result: 40% improvement in reporting efficiency through full automation</div>
+      <span class="project-link">View Case Study →</span>
+    </div>
+
+    <div class="project-card" onclick="openModal('health')">
+      <div class="project-num">Project 02 - August 2025</div>
+      <div class="project-title">National Health Expenditure Forecasting</div>
+      <p class="project-desc">Analysed 10+ years of national healthcare spending data (100K+ records) to build a predictive forecasting model and scenario-based budget simulation dashboards for strategic decision support.</p>
+      <div class="project-tags">
+        <span class="project-tag">Python</span>
+        <span class="project-tag">SQL</span>
+        <span class="project-tag">Power BI</span>
+        <span class="project-tag">Tableau</span>
+      </div>
+      <div class="project-impact">Key Result: 95% model accuracy · 20% cost optimisation opportunity identified</div>
+      <span class="project-link">View Case Study →</span>
+    </div>
+
+    <div class="project-card" onclick="openModal('ba')">
+      <div class="project-num">Project 03 - May 2025</div>
+      <div class="project-title">British Airways Data Science Simulation</div>
+      <p class="project-desc">Completed the British Airways Data Science Job Simulation on Forage - scraping and analysing customer review data to surface operational insights, and building a predictive model to understand purchase behaviour drivers.</p>
+      <div class="project-tags">
+        <span class="project-tag">Python</span>
+        <span class="project-tag">scikit-learn</span>
+        <span class="project-tag">NLP</span>
+        <span class="project-tag">Predictive Modelling</span>
+      </div>
+      <div class="project-impact">Key Result: Identified key drivers of customer buying behaviour via predictive analytics</div>
+      <span class="project-link">View Case Study →</span>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="section-label reveal">Professional Development</div>
+  <h2 class="section-title reveal">Certifications</h2>
+  <div class="cert-grid reveal">
+    <div class="cert-item">
+      <div class="cert-name">Data Science Job Simulation</div>
+      <div class="cert-issuer">Forage</div>
+    </div>
+    <div class="cert-item">
+      <div class="cert-name">British Airways Data Science Job Simulation</div>
+      <div class="cert-issuer">Forage - British Airways</div>
+    </div>
+    <div class="cert-item">
+      <div class="cert-name">CMI Level 7 Certificate - Strategic Management & Leadership Practice</div>
+      <div class="cert-issuer">Chartered Management Institute</div>
+    </div>
+    <div class="cert-item">
+      <div class="cert-name">Python Full Stack Developer Certification</div>
+      <div class="cert-issuer">Professional Certification</div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-label reveal">Academic Background</div>
+  <h2 class="section-title reveal">Education</h2>
+  <div class="edu-grid reveal">
+    <div class="edu-card">
+      <div class="edu-degree">MSc Data Science</div>
+      <div class="edu-uni">Coventry University, United Kingdom</div>
+      <div class="edu-year">Expected Graduation - September 2025</div>
+      <div class="edu-modules">Modules: Data Management Systems · Big Data Analytics & Visualization · Machine Learning · Statistical Modelling · Advanced SQL</div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-degree">BSc Aviation</div>
+      <div class="edu-uni">VELS University, India</div>
+      <div class="edu-year">Graduated - May 2022</div>
+      <div class="edu-modules">Modules: Aerodynamics · Radio Telephony · Aviation Meteorology · Air Traffic Control · Flight Operations</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label reveal">Get in Touch</div>
+  <h2 class="section-title reveal">Open to Data Analyst<br>& BI Analyst Roles</h2>
+  <div class="contact-grid">
+    <div class="contact-row reveal">
+      <div class="contact-item">
+        <div class="contact-label">Location</div>
+        <div class="contact-value">London, United Kingdom</div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-label">Phone</div>
+        <div class="contact-value"><a href="tel:+447818990349">+44 7818 990349</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-label">Email</div>
+        <div class="contact-value"><a href="mailto:hemanthgavini7388@gmail.com">hemanthgavini7388@gmail.com</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-label">LinkedIn</div>
+        <div class="contact-value"><a href="https://linkedin.com/in/hemanthgavini" target="_blank">linkedin.com/in/hemanthgavini</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-label">GitHub</div>
+        <div class="contact-value"><a href="https://github.com/hemanthgavini7388-commits" target="_blank">github.com/hemanthgavini7388-commits</a></div>
+      </div>
+    </div>
+    <div class="contact-cta reveal">
+      <h3 class="section-title" style="font-size:26px;margin-bottom:20px;">Ready to contribute to<br>your analytics team.</h3>
+      <p>Seeking Data Analyst or BI Analyst opportunities in commercial, retail, fintech or operations-driven environments. I bring hands-on delivery capability, governance-first thinking and a track record of reducing reporting overhead while increasing analytical depth.</p>
+      <a href="mailto:hemanthgavini7388@gmail.com" class="btn-primary">Start a Conversation</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Hemanth Gavini</div>
+  <div class="footer-copy">Data Analyst · London, UK · MSc Data Science · 2025</div>
+</footer>
+
+<!-- PROJECT MODALS -->
+<div class="modal-overlay" id="modal-amazon">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('amazon')">✕</button>
+    <div class="modal-header">
+      <div class="modal-tag">Project 01 · Real-Time Analytics · June 2025</div>
+      <div class="modal-title">Amazon Real-Time Sales Analytics Pipeline</div>
+      <div class="modal-subtitle">End-to-end real-time data pipeline processing 12,000+ records at 20 records/second with automated KPI dashboards and Direct Query business monitoring.</div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">Business Impact</div>
+        <div class="metrics-row">
+          <div class="metric-box"><div class="num">12K+</div><div class="lbl">Records Processed</div></div>
+          <div class="metric-box"><div class="num">20/s</div><div class="lbl">Ingestion Rate</div></div>
+          <div class="metric-box"><div class="num">40%</div><div class="lbl">Efficiency Gain</div></div>
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">Architecture Overview</div>
+        <p>The pipeline utilises a <strong>producer-consumer architecture</strong> — a Python-based producer continuously ingests raw sales records at 20 records/second into a MySQL staging database. A parallel consumer process applies business logic, aggregations and KPI calculations before writing to a clean reporting layer. Power BI connects via Direct Query to deliver live dashboards without scheduled refresh dependency.</p>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">Technical Stack</div>
+        <ul>
+          <li><strong>Python</strong> - Pandas for transformation, threading for producer-consumer concurrency</li>
+          <li><strong>MySQL</strong> - Staging and reporting schema with optimised indexing for query performance</li>
+          <li><strong>Power BI</strong> - Direct Query mode, DAX measures for KPI calculations, dynamic filters</li>
+          <li><strong>ETL Design</strong> - Automated daily KPI aggregations covering revenue, orders, ratings and regional performance</li>
+        </ul>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">SQL Sample — Daily KPI Aggregation</div>
+        <div class="code-block"><span class="keyword">SELECT</span>
+  DATE(order_date)                                    <span class="comment">AS report_date</span>,
+  region,
+  COUNT(order_id)                                     <span class="comment">AS total_orders</span>,
+  ROUND(SUM(revenue), 2)                              <span class="comment">AS total_revenue</span>,
+  ROUND(AVG(customer_rating), 2)                      <span class="comment">AS avg_rating</span>,
+  ROUND(SUM(revenue) / COUNT(order_id), 2)            <span class="comment">AS avg_order_value</span>,
+  ROW_NUMBER() <span class="keyword">OVER</span> (PARTITION BY region <span class="keyword">ORDER BY</span> SUM(revenue) <span class="keyword">DESC</span>) <span class="comment">AS rank</span>
+<span class="keyword">FROM</span> sales_staging
+<span class="keyword">WHERE</span> status = <span class="string">'completed'</span>
+<span class="keyword">GROUP BY</span> DATE(order_date), region
+<span class="keyword">ORDER BY</span> report_date <span class="keyword">DESC</span>;</div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">Outcome</div>
+        <p>Eliminated manual daily reporting through full automation. Reporting efficiency improved by 40%. Business teams gained access to live performance tracking, enabling faster operational responses to demand fluctuations, regional performance gaps and rating deterioration.</p>
+      </div>
+      <p style="margin-top:24px;"><a href="https://github.com/hemanthgavini7388-commits" target="_blank" class="project-link">View on GitHub →</a></p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-health">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('health')">✕</button>
+    <div class="modal-header">
+      <div class="modal-tag">Project 02 · Predictive Forecasting · August 2025</div>
+      <div class="modal-title">National Health Expenditure Forecasting</div>
+      <div class="modal-subtitle">Predictive modelling on 10+ years of healthcare spending data, achieving 95% accuracy and identifying a 20% cost optimisation opportunity through preventive health investment simulation.</div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">Business Impact</div>
+        <div class="metrics-row">
+          <div class="metric-box"><div class="num">100K+</div><div class="lbl">Records Analysed</div></div>
+          <div class="metric-box"><div class="num">95%</div><div class="lbl">Model Accuracy</div></div>
+          <div class="metric-box"><div class="num">20%</div><div class="lbl">Cost Optimisation Identified</div></div>
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">Methodology</div>
+        <p>Analysed a decade of national healthcare expenditure data spanning multiple categories — primary care, hospitalisation, preventive programs and administrative overhead. Applied time series decomposition to separate trend, seasonal and cyclical components before building a regression-based forecasting model using scikit-learn.</p>
+        <p>Scenario modelling dashboards in Power BI and Tableau allowed stakeholders to simulate the financial impact of reallocating budget toward preventive health programs — quantifying a potential 20% cost reduction over a 5-year horizon.</p>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">Technical Stack</div>
+        <ul>
+          <li><strong>Python</strong> — scikit-learn (LinearRegression, RandomForest), Pandas, Matplotlib, Seaborn</li>
+          <li><strong>SQL</strong> — Data extraction, CTEs, multi-year aggregations, YoY variance calculations</li>
+          <li><strong>Power BI & Tableau</strong> — Scenario simulation dashboards, forecast visualisation, budget allocation modelling</li>
+        </ul>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">Python Model Approach</div>
+        <div class="code-block"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestRegressor
+<span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split
+<span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> r2_score, mean_absolute_error
+
+X_train, X_test, y_train, y_test = train_test_split(
+    features, target, test_size=<span class="string">0.2</span>, random_state=<span class="string">42</span>
+)
+
+model = RandomForestRegressor(n_estimators=<span class="string">200</span>, random_state=<span class="string">42</span>)
+model.fit(X_train, y_train)
+
+predictions = model.predict(X_test)
+accuracy  = r2_score(y_test, predictions)   <span class="comment"># 0.95</span>
+mae       = mean_absolute_error(y_test, predictions)</div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">Strategic Implication</div>
+        <p>The model demonstrated that a 10% increase in preventive health program investment correlates with a 20% reduction in hospitalisation-related expenditure over five years. This provides an evidence-based framework for budget reallocation decisions at a national planning level.</p>
+      </div>
+      <p style="margin-top:24px;"><a href="https://github.com/hemanthgavini7388-commits" target="_blank" class="project-link">View on GitHub →</a></p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-ba">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('ba')">✕</button>
+    <div class="modal-header">
+      <div class="modal-tag">Project 03 · Behaviour Modelling · May 2025 · Forage</div>
+      <div class="modal-title">British Airways Data Science Simulation</div>
+      <div class="modal-subtitle">Customer review scraping and sentiment analysis combined with predictive modelling to identify the key behavioural and operational factors driving flight booking decisions.</div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">Scope</div>
+        <p>Completed as part of the British Airways Data Science Job Simulation on Forage - a structured simulation mirroring real-world analytics work conducted within British Airways' data science function. Two primary deliverables: a customer insight report from review analysis, and a predictive model for purchase behaviour.</p>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">Review Scraping & Sentiment Analysis</div>
+        <ul>
+          <li>Scraped customer review data from publicly available sources using Python (BeautifulSoup, Requests)</li>
+          <li>Cleaned and preprocessed text data - removing noise, stop words, and normalising formatting</li>
+          <li>Applied sentiment classification to identify satisfaction drivers and recurring complaint themes</li>
+          <li>Visualised key findings using Matplotlib and Seaborn for executive presentation</li>
+        </ul>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">Predictive Modelling</div>
+        <ul>
+          <li>Feature engineering from customer journey data - booking lead time, route, travel class, ancillary purchases</li>
+          <li>Built classification model to predict likelihood of booking completion</li>
+          <li>Evaluated model performance using precision, recall and AUC-ROC metrics</li>
+          <li>Identified top feature importances influencing buying behaviour - enabling targeted intervention strategies</li>
+        </ul>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">Technical Stack</div>
+        <ul>
+          <li><strong>Python</strong> - BeautifulSoup, scikit-learn, Pandas, NLTK</li>
+          <li><strong>Modelling</strong> - Random Forest Classifier, feature importance analysis</li>
+          <li><strong>Visualisation</strong> - Matplotlib, Seaborn</li>
+        </ul>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">Outcome</div>
+        <p>Delivered a structured analytical presentation summarising customer experience themes and a predictive framework for understanding and influencing booking conversion. Demonstrated ability to synthesise unstructured data sources into commercially actionable intelligence.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CHATBOT -->
+<div class="chatbot-wrapper">
+  <div class="chat-panel" id="chat-panel">
+    <div class="chat-header">
+      <div>
+        <div class="chat-title">Hemanth AI - Recruiter Assistant</div>
+        <div class="chat-status"><span class="status-dot"></span>Online · Powered by profile knowledge</div>
+      </div>
+      <button class="chat-close-btn" onclick="toggleChat()">✕</button>
+    </div>
+    <div class="chat-search">
+      <input type="text" id="chat-search-input" placeholder="Search Hemanth's profile..." oninput="searchProfile(this.value)">
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="msg bot">Hello. I am Hemanth's recruiter assistant. I can answer questions about his skills, experience, projects and technical capabilities. How can I help?</div>
+    </div>
+    <div class="chat-suggestions">
+      <button class="chat-sugg" onclick="askQuestion('What tools does Hemanth specialise in?')">Tools & Stack</button>
+      <button class="chat-sugg" onclick="askQuestion('What was the business impact of the segmentation project?')">Business Impact</button>
+      <button class="chat-sugg" onclick="askQuestion('Explain the ETL pipeline architecture')">ETL Architecture</button>
+      <button class="chat-sugg" onclick="askQuestion('What forecasting model was used?')">Forecasting</button>
+    </div>
+    <div class="chat-input-area">
+      <input type="text" class="chat-input" id="chat-input" placeholder="Ask about skills, projects..." onkeydown="if(event.key==='Enter')sendChat()">
+      <button class="chat-voice" id="voice-btn" onclick="startVoice()" title="Voice input">🎙</button>
+      <button class="chat-send" onclick="sendChat()">Send</button>
+    </div>
+  </div>
+  <button class="chat-toggle" onclick="toggleChat()" id="chat-toggle-btn" title="Open Recruiter Assistant">AI</button>
+</div>
+
+<script>
+// CURSOR
+const cursor = document.getElementById('cursor');
+const cursorRing = document.getElementById('cursor-ring');
+document.addEventListener('mousemove', e => {
+  cursor.style.left = e.clientX - 5 + 'px';
+  cursor.style.top = e.clientY - 5 + 'px';
+  cursorRing.style.left = e.clientX - 18 + 'px';
+  cursorRing.style.top = e.clientY - 18 + 'px';
+});
+
+// PROGRESS BAR
+window.addEventListener('scroll', () => {
+  const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+  document.getElementById('progress-bar').style.width = scrolled + '%';
+});
+
+// CANVAS BACKGROUND
+(function() {
+  const canvas = document.getElementById('bg-canvas');
+  const ctx = canvas.getContext('2d');
+  let w, h, particles = [];
+  
+  function resize() {
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  for (let i = 0; i < 50; i++) {
+    particles.push({
+      x: Math.random() * window.innerWidth,
+      y: Math.random() * window.innerHeight,
+      vx: (Math.random() - 0.5) * 0.3,
+      vy: (Math.random() - 0.5) * 0.3,
+      size: Math.random() * 1.5 + 0.5
+    });
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, w, h);
+    
+    // Draw grid
+    ctx.strokeStyle = 'rgba(21, 96, 189, 0.06)';
+    ctx.lineWidth = 1;
+    const spacing = 60;
+    for (let x = 0; x < w; x += spacing) {
+      ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke();
+    }
+    for (let y = 0; y < h; y += spacing) {
+      ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke();
+    }
+    
+    // Draw particles
+    particles.forEach(p => {
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0 || p.x > w) p.vx *= -1;
+      if (p.y < 0 || p.y > h) p.vy *= -1;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(74, 144, 217, 0.25)';
+      ctx.fill();
+    });
+    
+    // Draw connections
+    ctx.strokeStyle = 'rgba(74, 144, 217, 0.06)';
+    ctx.lineWidth = 0.5;
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        if (dist < 120) {
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+    
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+// SCROLL REVEAL
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); }
+  });
+}, { threshold: 0.1 });
+revealEls.forEach(el => observer.observe(el));
+
+// MODALS
+function openModal(id) {
+  document.getElementById('modal-' + id).classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(id) {
+  document.getElementById('modal-' + id).classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.querySelectorAll('.modal-overlay').forEach(el => {
+  el.addEventListener('click', function(e) {
+    if (e.target === this) {
+      this.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
+});
+
+// CHATBOT KNOWLEDGE BASE
+const kb = {
+  "tools": "Hemanth specialises in SQL (CTEs, Window Functions, Aggregations), Python (Pandas, NumPy, scikit-learn, Matplotlib, Seaborn), Power BI (DAX, Direct Query, Data Modelling), Tableau, Excel Advanced, and MySQL. He also has experience with Adobe Premiere Pro, CapCut and Canva.",
+  "experience": "Hemanth has worked as a Data Analyst in London delivering end-to-end analytics across retail and operational datasets. Key achievements include integrating 100K+ row datasets, reducing reporting effort by 40%, building ETL pipelines and conducting segmentation on 50K+ transactions.",
+  "etl": "Hemanth developed Python and SQL-based ETL pipelines using a producer-consumer architecture, processing 12K+ records at 20 records/second. The pipeline feeds a MySQL staging layer which connects to Power BI via Direct Query for near-real-time reporting.",
+  "forecasting": "For the National Health Expenditure project, Hemanth built a Random Forest regression model achieving 95% predictive accuracy on 100K+ records of healthcare spending data. The model identified a 20% cost optimisation opportunity through preventive health investment modelling.",
+  "segmentation": "Hemanth conducted customer segmentation on 50K+ transactions which revealed that online orders achieved +22% higher ratings and +18% higher delivery satisfaction compared to in-store. This directly supported a strategy projecting a 15% uplift in repeat purchases.",
+  "projects": "Hemanth's featured projects are: (1) Amazon Real-Time Sales Analytics — real-time pipeline at 20 records/sec, 40% efficiency gain. (2) National Health Expenditure Forecasting — 95% model accuracy, 20% cost optimisation. (3) British Airways Data Science Simulation — customer review analysis and predictive buying behaviour modelling.",
+  "education": "Hemanth holds an MSc in Data Science from Coventry University (graduating September 2025) covering Machine Learning, Big Data Analytics, Data Management Systems. He also holds a BSc in Aviation from VELS University, India (2022).",
+  "contact": "Hemanth is based in London, UK. He can be reached at hemanthgavini7388@gmail.com, +44 7818 990349, LinkedIn: linkedin.com/in/hemanthgavini, GitHub: github.com/hemanthgavini7388-commits.",
+  "certifications": "Hemanth holds: Data Science Job Simulation (Forage), British Airways Data Science Job Simulation (Forage), CMI Level 7 Certificate in Strategic Management & Leadership Practice, and Python Full Stack Developer Certification.",
+  "github": "Hemanth's GitHub profile is: github.com/hemanthgavini7388-commits — featuring data analytics projects including real-time pipelines, forecasting models and BI solutions.",
+  "impact": "Key business impacts: 40% reduction in reporting effort, 95% forecasting accuracy, +22% customer rating insight from segmentation, 20% cost optimisation identified, 15% projected uplift in repeat purchases, 100K+ row dataset integration.",
+  "powerbi": "Hemanth builds interactive Power BI dashboards using DAX measures, Direct Query mode for real-time data and data modelling best practices. His dashboards track sales performance, SLA adherence, customer ratings and campaign ROI.",
+  "python": "Hemanth uses Python with Pandas for data manipulation, NumPy for numerical computation, scikit-learn for machine learning and predictive modelling, and Matplotlib/Seaborn for visualisation. He has built production ETL pipelines and forecasting models in Python.",
+  "sql": "Hemanth is proficient in advanced SQL including CTEs, window functions, aggregations, joins and query optimisation. He uses SQL for data extraction, transformation, KPI calculation and reporting layer design.",
+  "available": "Yes, Hemanth is currently seeking Data Analyst and BI Analyst roles in commercial, retail, fintech or operations-driven environments in the UK."
+};
+
+function getBotResponse(msg) {
+  const m = msg.toLowerCase();
+  if (m.includes('tool') || m.includes('stack') || m.includes('software') || m.includes('use')) return kb.tools;
+  if (m.includes('etl') || m.includes('pipeline') || m.includes('architecture') || m.includes('producer')) return kb.etl;
+  if (m.includes('forecast') || m.includes('model') || m.includes('predict') || m.includes('accuracy')) return kb.forecasting;
+  if (m.includes('segment') || m.includes('customer') || m.includes('rating') || m.includes('online')) return kb.segmentation;
+  if (m.includes('project') || m.includes('amazon') || m.includes('health') || m.includes('british')) return kb.projects;
+  if (m.includes('education') || m.includes('degree') || m.includes('university') || m.includes('msc')) return kb.education;
+  if (m.includes('contact') || m.includes('email') || m.includes('phone') || m.includes('reach')) return kb.contact;
+  if (m.includes('cert') || m.includes('qualification')) return kb.certifications;
+  if (m.includes('github') || m.includes('repo') || m.includes('code')) return kb.github;
+  if (m.includes('impact') || m.includes('result') || m.includes('achievement') || m.includes('deliver')) return kb.impact;
+  if (m.includes('power bi') || m.includes('powerbi') || m.includes('dashboard') || m.includes('tableau')) return kb.powerbi;
+  if (m.includes('python') || m.includes('pandas') || m.includes('scikit') || m.includes('sklearn')) return kb.python;
+  if (m.includes('sql') || m.includes('query') || m.includes('database')) return kb.sql;
+  if (m.includes('available') || m.includes('open') || m.includes('hire') || m.includes('seeking') || m.includes('looking')) return kb.available;
+  if (m.includes('experience') || m.includes('work') || m.includes('background') || m.includes('history')) return kb.experience;
+  if (m.includes('hello') || m.includes('hi') || m.includes('hey')) return "Hello. I am Hemanth's recruiter assistant. I can provide information about his technical skills, project experience, business impact and career background. What would you like to know?";
+  return "I can provide detailed information about Hemanth's technical skills (SQL, Python, Power BI), project case studies, business impact metrics, certifications and contact details. Please ask a specific question or use one of the suggested topics above.";
+}
+
+function searchProfile(val) {
+  if (!val) return;
+  const m = val.toLowerCase();
+  const input = document.getElementById('chat-input');
+  if (m.length > 2) input.placeholder = 'Ask about: ' + val + '...';
+  else input.placeholder = 'Ask about skills, projects...';
+}
+
+function sendChat() {
+  const input = document.getElementById('chat-input');
+  const val = input.value.trim();
+  if (!val) return;
+  addMsg(val, 'user');
+  input.value = '';
+  setTimeout(() => addMsg(getBotResponse(val), 'bot'), 350);
+}
+
+function askQuestion(q) {
+  addMsg(q, 'user');
+  setTimeout(() => addMsg(getBotResponse(q), 'bot'), 350);
+}
+
+function addMsg(text, type) {
+  const msgs = document.getElementById('chat-messages');
+  const div = document.createElement('div');
+  div.className = 'msg ' + type;
+  div.textContent = text;
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function toggleChat() {
+  const panel = document.getElementById('chat-panel');
+  const btn = document.getElementById('chat-toggle-btn');
+  panel.classList.toggle('open');
+  btn.textContent = panel.classList.contains('open') ? '✕' : 'AI';
+}
+
+function startVoice() {
+  if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+    addMsg('Voice input is not supported in this browser. Please type your question.', 'bot');
+    return;
+  }
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const recognition = new SpeechRecognition();
+  const btn = document.getElementById('voice-btn');
+  recognition.lang = 'en-GB';
+  recognition.onstart = () => btn.classList.add('listening');
+  recognition.onend = () => btn.classList.remove('listening');
+  recognition.onresult = (e) => {
+    const transcript = e.results[0][0].transcript;
+    document.getElementById('chat-input').value = transcript;
+    sendChat();
+  };
+  recognition.onerror = () => {
+    btn.classList.remove('listening');
+    addMsg('Voice recognition failed. Please try again or type your question.', 'bot');
+  };
+  recognition.start();
+}
+</script>
+</body>
+</html>
