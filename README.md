@@ -16,11 +16,8 @@ This portfolio showcases my:
 - Data analysis projects
 - Dashboard projects
 - SQL case studies
-- Visualization reports
+- Visualization report
 
-Live Website
-You can view my live portfolio here:
-https://github.com/hemanthgavini7388-commits/hemanth_portfolio_website.git
 
 Contact
 Feel free to connect with me:
